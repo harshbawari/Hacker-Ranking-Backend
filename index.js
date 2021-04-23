@@ -1,10 +1,19 @@
 const express = require('express');
 const http = require('http');
+const https = require('https');
 const bodyParser = require('body-parser');
 const hackerRouter = require('./routes/hackerRouter');
-import cors from 'cors';
+const fs = require('fs');
+const cors = require('cors');
 
 const port = process.env.PORT;
+
+var key = fs.readFileSync(__dirname + '/selfsigned.key');
+var cert = fs.readFileSync(__dirname + '/selfsigned.cert');
+var credentials = {
+    key: key,
+    cert: cert
+};
 
 
 //Connect to database
@@ -57,9 +66,8 @@ hackerRanking.get('/', (req, res, next) => {
 });
 
 
-
 //Server
-const server = http.createServer(hackerRanking);
+const server = https.createServer(credentials, hackerRanking);
 
 
 server.listen(port);
