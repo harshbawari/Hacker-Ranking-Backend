@@ -31,25 +31,25 @@ const hackerRanking = express();
 
 
 //CORS Policy
-// hackerRanking.use(function (req, res, next) {
+hackerRanking.use(function (req, res, next) {
 
-//     // Website you wish to allow to connect
-//     res.setHeader('Access-Control-Allow-Origin', 'http://103.253.173.27:3000');
+    // Website you wish to allow to connect
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
 
-//     // Request methods you wish to allow
-//     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
 
-//     // Request headers you wish to allow
-//     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
 
-//     // Set to true if you need the website to include cookies in the requests sent
-//     // to the API (e.g. in case you use sessions)
-//     res.setHeader('Access-Control-Allow-Credentials', true);
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.setHeader('Access-Control-Allow-Credentials', true);
 
-//     // Pass to next layer of middleware
-// });
+    // Pass to next layer of middleware
+});
 
-hackerRanking.use(cors());
+//hackerRanking.use(cors());
 
 //Middlewares
 hackerRanking.use(bodyParser.json());
@@ -70,4 +70,4 @@ hackerRanking.get('/', (req, res, next) => {
 const server = https.createServer(credentials, hackerRanking);
 
 
-server.listen(port);
+server.listen();
