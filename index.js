@@ -21,7 +21,7 @@ const hackerRanking = express();
 
 
 //CORS Policy
-app.use(function (req, res, next) {
+hackerRanking.use(function (req, res, next) {
 
     // Website you wish to allow to connect
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8888');
@@ -37,7 +37,7 @@ app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Credentials', true);
 
     // Pass to next layer of middleware
-}
+}}
 
 //Middlewares
 hackerRanking.use(bodyParser.json());
