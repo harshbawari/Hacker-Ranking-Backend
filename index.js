@@ -3,17 +3,9 @@ const http = require('http');
 const https = require('https');
 const bodyParser = require('body-parser');
 const hackerRouter = require('./routes/hackerRouter');
-const fs = require('fs');
 const cors = require('cors');
 
 const port = process.env.PORT;
-
-var key = fs.readFileSync(__dirname + '/selfsigned.key');
-var cert = fs.readFileSync(__dirname + '/selfsigned.cert');
-var credentials = {
-    key: key,
-    cert: cert
-};
 
 
 //Connect to database
@@ -34,7 +26,7 @@ const hackerRanking = express();
 hackerRanking.use(function (req, res, next) {
 
     // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'https://secure-dawn-75725.herokuapp.com');
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
 
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -67,7 +59,7 @@ hackerRanking.get('/', (req, res, next) => {
 
 
 //Server
-const server = https.createServer(credentials, hackerRanking);
+const server = http.createServer(hackerRanking);
 
 
-server.listen();
+server.listen(port);
