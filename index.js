@@ -38,4 +38,4 @@ hackerRanking.get('/', (req, res, next) => {
 const server = http.createServer(hackerRanking);
 
 
-server.listen(8000);
+server.listen();
