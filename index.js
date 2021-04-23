@@ -3,6 +3,8 @@ const http = require('http');
 const bodyParser = require('body-parser');
 const hackerRouter = require('./routes/hackerRouter');
 
+const port = process.env.PORT;
+
 
 //Connect to database
 const mongoose = require('mongoose');
@@ -38,4 +40,4 @@ hackerRanking.get('/', (req, res, next) => {
 const server = http.createServer(hackerRanking);
 
 
-server.listen();
+server.listen(port);
