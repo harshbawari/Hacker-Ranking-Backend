@@ -4,6 +4,7 @@ const https = require('https');
 const bodyParser = require('body-parser');
 const hackerRouter = require('./routes/hackerRouter');
 const cors = require('cors');
+const leaderboardRouter = require('./routes/leaderboardRouter');
 
 const port = process.env.PORT;
 
@@ -51,6 +52,7 @@ hackerRanking.use(bodyParser.urlencoded({ extended: true}));
 
 //API
 hackerRanking.use('/hackers', hackerRouter);
+hackerRanking.use('/leaderboard', leaderboardRouter);
 
 hackerRanking.get('/', (req, res, next) => {
     res.statusCode = 200;
